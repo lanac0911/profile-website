@@ -1,62 +1,168 @@
-import React from "react";
-import { Box, Flex, Text } from "@radix-ui/themes";
+import { Box, Code, Flex, Text } from "@radix-ui/themes";
+import { useLanguage } from "@component/Language/LanguageContext";
+import Quote from "@component/Quote";
+import { ColorSets } from "@/styles/color";
+import { Building2, CalendarClock, ArrowBigRightDash } from "lucide-react";
+import Highlighter from "@/components/Highlighter";
 
 const ExperiencePage = () => {
-  const experiences = [
+  const { language } = useLanguage();
+
+  // English version
+  const experiences_en = [
     {
-      title: "Senior Software Engineer",
-      company: "ABC Corporation",
-      period: "Jan 2020 - Present",
-      description:
-        "Leading the development of scalable web applications using React, Node.js and cloud technologies.",
+      title: "Cross-Platform Mobile Developer",
+      company: "智器科技 Artifact",
+      period: "Dec 2023 - Present",
+      description: [
+        "Developed cross-platform mobile apps using React Native and launched on iOS and Android.",
+        "Built a responsive Line Bot web interface using React for a specialized gas industry SaaS.",
+        "Collaborated closely with backend teams for rigorous testing and performance optimization.",
+        "Delivered a seamless user experience across multiple platforms.",
+      ],
     },
     {
-      title: "Software Engineer",
-      company: "XYZ Inc.",
-      period: "Jun 2017 - Dec 2019",
-      description:
-        "Developed and maintained robust applications using React and Python.",
-    },
-    {
-      title: "Intern",
-      company: "Startup Lab",
-      period: "Jan 2017 - May 2017",
-      description:
-        "Assisted in building prototypes and conducting market research for new product ideas.",
+      title: "Front End Intern",
+      company: "精誠資訊 Systex",
+      period: "2022 - 2023",
+      description: [
+        "Developed an interactive dashboard using Vue.",
+        "Played a key role in UI/UX design to ensure visual appeal and responsiveness.",
+        "Integrated dynamic data visualizations and collaborated with cross-functional teams.",
+        "Continuously optimized front-end performance and refined the user experience.",
+      ],
     },
   ];
 
-  return (
-    <Box style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
-      <Text size="5" weight="bold" style={{ marginBottom: "1rem" }}>
-        Experience
+  // Chinese version
+  const experiences_ch = [
+    {
+      title: "跨平台移動開發者",
+      company: "智器科技 Artifact",
+      period: "2023年12月 - 至今",
+      description: [
+        "使用 React Native 開發跨平台移動應用，並成功上架至 iOS 與 Android。",
+        "使用 React 開發響應式 Line Bot 網頁介面，專注於瓦斯行業的 SaaS 方案。",
+        "與後端團隊密切合作，進行嚴格測試與性能優化。",
+        "提供多平台間無縫的用戶體驗。",
+      ],
+    },
+    {
+      title: "前端實習生",
+      company: "精誠資訊 Systex",
+      period: "2022 - 2023",
+      description: [
+        "使用 Vue 開發互動式儀表板。",
+        "參與 UI/UX 設計，確保介面視覺吸引且高度響應。",
+        "整合動態數據視覺化，與跨部門團隊密切協作。",
+        "持續優化前端性能並完善用戶體驗。",
+      ],
+    },
+  ];
+
+  const exp = language === "en" ? experiences_en : experiences_ch;
+  const seeMoreText =
+    language === "en" ? (
+      <Text
+        style={{
+          color: "#888",
+          fontStyle: "italic",
+          textDecoration: "underline",
+        }}
+      >
+        Go To{" "}
+        <Highlighter backgroundColor={ColorSets.hightlightBlue}>
+          My.Projects
+        </Highlighter>{" "}
+        to see more
       </Text>
-      {experiences.map((exp, index) => (
+    ) : (
+      <Text
+        style={{
+          color: "#888",
+          fontStyle: "italic",
+          textDecoration: "underline",
+        }}
+      >
+        {" "}
+        到{" "}
+        <Highlighter backgroundColor={ColorSets.hightlightBlue}>
+          My.Projects
+        </Highlighter>{" "}
+        看更多
+      </Text>
+    );
+
+  return (
+    <Flex direction={{ initial: "column", md: "column" }} gap="5" p="5">
+      {exp.map((exp, index) => (
         <Box key={index} style={{ marginBottom: "2rem" }}>
-          <Flex direction="row" justify="space-between" align="center">
-            <Text size="4" weight="bold">
-              {exp.title}
-            </Text>
-            <Text size="2" color="gray">
-              {exp.period}
-            </Text>
+          <Flex justify="between" align="center">
+            <Quote accentColor={ColorSets.tabGray} textColor="#000">
+              <Text
+                size={{ initial: "8", xs: "9" }}
+                style={{ fontWeight: "bold" }}
+              >
+                {exp.title}
+              </Text>
+            </Quote>
+            <Flex gap=".5em" align="center">
+              <CalendarClock size={15} color={ColorSets.quoteGray} />
+              <Code
+                color="gray"
+                style={{
+                  paddingRight: "0.5rem",
+                  paddingLeft: "0.5rem",
+                  borderRadius: 4,
+                }}
+              >
+                {exp.period}
+              </Code>
+            </Flex>
           </Flex>
-          <Text
-            size="3"
+          <Flex gap=".5em" align="center" mt=".5rem">
+            <Building2 size={15} color={ColorSets.quoteGray} />
+            <Code
+              color="gray"
+              style={{
+                paddingRight: "0.5rem",
+                paddingLeft: "0.5rem",
+                borderRadius: 4,
+              }}
+            >
+              {exp.company}
+            </Code>
+          </Flex>
+
+          {/* Decriptions */}
+          <Box
             style={{
-              fontStyle: "italic",
               marginTop: "0.5rem",
-              color: "#555",
+              paddingLeft: "1rem",
+              lineHeight: 1.5,
             }}
           >
-            {exp.company}
-          </Text>
-          <Text size="2" style={{ marginTop: "0.5rem", lineHeight: 1.5 }}>
-            {exp.description}
-          </Text>
+            {exp.description.map((item, idx) => (
+              <li key={idx}>
+                <Text size="2">{item}</Text>
+              </li>
+            ))}
+          </Box>
         </Box>
       ))}
-    </Box>
+
+      {/* See More */}
+      <Flex
+        position="fixed"
+        gap={".5em"}
+        bottom={"1em"}
+        right={"2.5em"}
+        align="center"
+      >
+        {seeMoreText}
+        <ArrowBigRightDash color={"#888"} size={20} />
+      </Flex>
+    </Flex>
   );
 };
 

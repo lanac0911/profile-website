@@ -9,6 +9,7 @@ import {
   Binary,
 } from "lucide-react";
 import Highlighter from "@component/Highlighter";
+import { ColorSets } from "@/styles/color";
 
 const MePage = () => {
   const { language } = useLanguage();
@@ -18,11 +19,11 @@ const MePage = () => {
       <Text as="p" size="3">
         Hi! I'm <Highlighter backgroundColor="#97999A"> Lana Chang</Highlighter>{" "}
         from Taiwan, passionate and curious about{" "}
-        <Highlighter backgroundColor="#8EB4FF"> IoT </Highlighter>{" "}
+        <Highlighter backgroundColor={ColorSets.hightlightBlue}> IoT </Highlighter>{" "}
         <MonitorCheck size={15} style={{ marginRight: ".3em" }} />,
-        <Highlighter backgroundColor="#8EB4FF">software </Highlighter>{" "}
+        <Highlighter backgroundColor={ColorSets.hightlightBlue}>software </Highlighter>{" "}
         <Binary size={15} style={{ marginRight: ".3em" }} />
-        and <Highlighter backgroundColor="#8EB4FF"> AI</Highlighter>{" "}
+        and <Highlighter backgroundColor={ColorSets.hightlightBlue}> AI</Highlighter>{" "}
         <BrainCircuit size={15} style={{ marginRight: ".3em" }} />.
       </Text>
       <Text as="p" size="3">
@@ -36,11 +37,11 @@ const MePage = () => {
   const FirstParagraph_ch = () => (
     <Text size="3">
       嗨！我是 <Highlighter backgroundColor="#97999A">張黛妤</Highlighter>{" "}
-      ，一位對 <Highlighter backgroundColor="#8EB4FF"> IoT </Highlighter>{" "}
+      ，一位對 <Highlighter backgroundColor={ColorSets.hightlightBlue}> IoT </Highlighter>{" "}
       <MonitorCheck size={15} style={{ marginRight: ".3em" }} />,
-      <Highlighter backgroundColor="#8EB4FF">software </Highlighter>{" "}
+      <Highlighter backgroundColor={ColorSets.hightlightBlue}>software </Highlighter>{" "}
       <Binary size={15} style={{ marginRight: ".3em" }} />
-      和 <Highlighter backgroundColor="#8EB4FF"> AI</Highlighter>{" "}
+      和 <Highlighter backgroundColor={ColorSets.hightlightBlue}> AI</Highlighter>{" "}
       <BrainCircuit size={15} style={{ marginRight: ".3em" }} />
       .充滿熱情與好奇心的 developer。
       我熱愛探索新知，喜歡在工作與生活中尋找創新與靈感，並相信每個挑戰都是成長的契機。
