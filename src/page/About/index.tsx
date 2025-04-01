@@ -26,7 +26,7 @@ const tabFontSizeBreakpoint = {
 } as const;
 
 export const contentTitleFontSizeBreakpoint = {
-  initial: "3",
+  initial: "4",
   sm: "5",
   lg: "9",
 } as const;
