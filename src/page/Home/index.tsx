@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <Background>
       {/* 最外層 Section 使用 100vh 填滿視窗高度 */}
-      <Section px={{ initial: "4", xs: "8" }} height="100vh">
+      <Section px={{ initial: "7", xs: "8" }} height="100vh">
         <Flex gap="6" py="5" direction="row" style={{ height: "100%" }}>
           {/* 左半部分：在手機時 class 設定為 left-part，寬度在手機下 100% */}
           <Flex

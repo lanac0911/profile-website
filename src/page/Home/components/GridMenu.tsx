@@ -112,11 +112,7 @@ const GridMenu = () => {
                             padding: "0.1em",
                           }}
                         >
-                          <X
-                            width="0.9em"
-                            height="0.9em"
-                            color="#69110A"
-                          />
+                          <X width="0.9em" height="0.9em" color="#69110A" />
                         </IconButton>
                       </Dialog.Close>
                       <IconButton
@@ -139,7 +135,13 @@ const GridMenu = () => {
                       />
                     </div>
                   </div>
-                  <Dialog.Description>
+                  <Dialog.Description
+                    style={{
+                      padding: "0.5em",
+                      paddingRight: "1.5em",
+                      paddingLeft: "1.5em",
+                    }}
+                  >
                     <PageComponent />
                   </Dialog.Description>
                 </Dialog.Content>

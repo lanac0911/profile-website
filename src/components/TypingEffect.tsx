@@ -33,7 +33,7 @@ const TypingEffect: React.FC<TypingEffectProps> = ({
   }, [index, text, speed, delay]);
 
   return (
-    <span style={{ fontFamily: "monospace" }}>
+    <span style={{  }}>
       {displayedText}
       <span
         className="cursor"

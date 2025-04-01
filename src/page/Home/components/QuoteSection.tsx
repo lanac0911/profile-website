@@ -33,10 +33,11 @@ const QuoteSection = () => {
 
           <Text
             style={{
-              fontSize: "4em",
+              // fontSize: "4em",
               lineHeight: 1,
             }}
             weight="bold"
+            size={{ initial: "8", xs: "9" }}
           >
             LANA CHANG
           </Text>
@@ -59,7 +60,7 @@ const QuoteSection = () => {
       </Box>
 
       <style>
-      {`
+        {`
         @keyframes colorCycle {
           0% {
             color: #FFF;
