@@ -55,7 +55,7 @@ const CodeSection = () => {
         >{`{`}</Text>{" "}
       </Text>
       {me.personality.map((per, idx) => (
-        <Text key={idx} style={{ textAlign: "left", lineHeight: 1 }}>
+        <Text as="p" key={idx} style={{ textAlign: "left", lineHeight: 1 }}>
           <Text size="1" style={{ color: codestyle.attribute }}>
             {"\u00A0\u00A0\u00A0\u00A0"}
             {per}
@@ -87,7 +87,7 @@ const CodeSection = () => {
         >{`{`}</Text>{" "}
       </Text>
       {me.skills.map((per, idx) => (
-        <Text key={idx} style={{ textAlign: "left", lineHeight: 1 }}>
+        <Text as="p" key={idx} style={{ textAlign: "left", lineHeight: 1 }}>
           <Text size="1" style={{ color: codestyle.attribute }}>
             {"\u00A0\u00A0\u00A0\u00A0"}
             {per}
@@ -118,7 +118,7 @@ const CodeSection = () => {
         <Text size="1" style={{ color: codestyle.brackets }}>{`{`}</Text>
       </Text>
       {/* 特質 */}
-      <Text size="1" style={{ color: codestyle.comment }} mt="1">
+      <Text as="p" size="1" style={{ color: codestyle.comment }} mt="1">
         {"\u00A0\u00A0"}// 特質
       </Text>{" "}
       <Text>
@@ -155,7 +155,7 @@ const CodeSection = () => {
       </Text>
       <br />
       {/* (主要) 專業技能 */}
-      <Text size="1" style={{ color: codestyle.comment }}>
+      <Text as="p" size="1" style={{ color: codestyle.comment }}>
         {"\u00A0\u00A0"}// (主要) 專業技能
       </Text>{" "}
       <Text>
@@ -249,6 +249,7 @@ const CodeSection = () => {
       {/* const me */}
       {/* 使用打字效果呈現最後這行 */}
       <Text
+        as="p"
         style={{
           color: codestyle.white,
           textAlign: "left",
