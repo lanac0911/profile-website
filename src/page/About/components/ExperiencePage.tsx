@@ -4,6 +4,7 @@ import Quote from "@component/Quote";
 import { ColorSets } from "@/styles/color";
 import { Building2, CalendarClock, ArrowBigRightDash } from "lucide-react";
 import Highlighter from "@/components/Highlighter";
+import { contentFontSizeBreakpoint, contentTitleFontSizeBreakpoint } from "..";
 
 const ExperiencePage = () => {
   const { language } = useLanguage();
@@ -37,7 +38,7 @@ const ExperiencePage = () => {
   // Chinese version
   const experiences_ch = [
     {
-      title: "跨平台移動開發者",
+      title: "跨平台移動開發工程師",
       company: "智器科技 Artifact",
       period: "2023年12月 - 至今",
       description: [
@@ -100,12 +101,13 @@ const ExperiencePage = () => {
           <Flex justify="between" align="center">
             <Quote accentColor={ColorSets.tabGray} textColor="#000">
               <Text
-                size={{ initial: "8", xs: "9" }}
+                size={contentTitleFontSizeBreakpoint}
                 style={{ fontWeight: "bold" }}
               >
                 {exp.title}
               </Text>
             </Quote>
+            {/* 期間 */}
             <Flex gap=".5em" align="center">
               <CalendarClock size={15} color={ColorSets.quoteGray} />
               <Code
@@ -116,10 +118,11 @@ const ExperiencePage = () => {
                   borderRadius: 4,
                 }}
               >
-                {exp.period}
+                <Text size={contentFontSizeBreakpoint}>{exp.period}</Text>
               </Code>
             </Flex>
           </Flex>
+          {/* 公司 */}
           <Flex gap=".5em" align="center" mt=".5rem">
             <Building2 size={15} color={ColorSets.quoteGray} />
             <Code
@@ -130,7 +133,7 @@ const ExperiencePage = () => {
                 borderRadius: 4,
               }}
             >
-              {exp.company}
+              <Text size={contentFontSizeBreakpoint}>{exp.company}</Text>
             </Code>
           </Flex>
 
@@ -144,7 +147,7 @@ const ExperiencePage = () => {
           >
             {exp.description.map((item, idx) => (
               <li key={idx}>
-                <Text size="2">{item}</Text>
+                <Text size={contentFontSizeBreakpoint}>{item}</Text>
               </li>
             ))}
           </Box>

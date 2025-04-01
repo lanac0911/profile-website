@@ -13,6 +13,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  --font-size-1: 0.75rem;   /* 最小字體 */
+  --font-size-2: 0.875rem;
+  --font-size-3: 1rem;
+  --font-size-4: 1.125rem;
+  --font-size-5: 1.25rem;
+  --font-size-6: 1.5rem;
+  --font-size-7: 1.75rem;
+  --font-size-8: 2rem;
+  --font-size-9: 2.25rem;
+  --font-size-10: 2.5rem;   /* 最大字體 */
+}
+
+
 #root {
   width: 100%;
 }
