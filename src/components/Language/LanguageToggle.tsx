@@ -30,6 +30,7 @@ const LanguageToggle: React.FC = () => {
           background: "#fff",
           borderRadius: "4px",
           boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+          zIndex: 100,
         }}
       >
         <DropdownMenu.Item asChild onSelect={() => setLanguage("en")}>
