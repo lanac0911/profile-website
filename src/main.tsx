@@ -8,7 +8,11 @@ import "./App.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Theme>
+    <Theme
+      style={{
+        height: "100dvh",
+      }}
+    >
       <App />
     </Theme>
   </StrictMode>

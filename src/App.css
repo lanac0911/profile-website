@@ -8,3 +8,7 @@
   --em-font-family: "Ruda", serif;
   --quote-font-family: "Ruda", serif;
 }
+
+.dialog-window {
+  height: 90% !important;
+}

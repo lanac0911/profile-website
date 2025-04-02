@@ -14,7 +14,7 @@
 }
 
 :root {
-  --font-size-1: 0.75rem;   /* 最小字體 */
+  --font-size-1: 0.75rem; /* 最小字體 */
   --font-size-2: 0.875rem;
   --font-size-3: 1rem;
   --font-size-4: 1.125rem;
@@ -23,12 +23,14 @@
   --font-size-7: 1.75rem;
   --font-size-8: 2rem;
   --font-size-9: 2.25rem;
-  --font-size-10: 2.5rem;   /* 最大字體 */
+  --font-size-10: 2.5rem; /* 最大字體 */
+
+  --white: #FFF;
 }
 
-
-#root {
-  width: 100%;
+p,
+span {
+  color: #000;
 }
 
 a {
@@ -44,10 +46,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
-
 
 button {
   border-radius: 8px;
@@ -55,7 +54,6 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  /* font-family: "Ruda", inherit; */
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
