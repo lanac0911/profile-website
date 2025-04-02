@@ -36,8 +36,12 @@ const WindowSection: React.FC<WindowSectionProps> = ({
         <Box
           style={{
             display: "flex",
+            position: "sticky",
             alignItems: "center",
             padding: "8px",
+            top: 0,
+            zIndex: 1,
+
             backgroundColor: "#f5f5f5",
             borderBottom: "0.5px solid #f5f5f5",
             width: "100%",
@@ -94,9 +98,7 @@ const WindowSection: React.FC<WindowSectionProps> = ({
           }}
         >
           <div className="default-content">{children}</div>
-          {hoverEffect && (
-            <div className="hover-content">{hoverContent}</div>
-          )}
+          {hoverEffect && <div className="hover-content">{hoverContent}</div>}
         </Box>
       </Box>
 

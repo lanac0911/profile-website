@@ -17,13 +17,14 @@ const QuoteSection = () => {
       >
         {/* Quote 名字 */}
         <Quote accentColor={ColorSets.hightlightOrange} textColor="#FFF">
-          <Text size="3">
+          <Text size="3" style={{ color: "#FFF" }}>
             HELLO THERE{" "}
             <span
               style={{
                 display: "inline-block",
                 transformOrigin: "70% 70%",
                 animation: "wave 2s ease-in-out infinite",
+                color: "#FFF",
               }}
             >
               👋
@@ -33,6 +34,7 @@ const QuoteSection = () => {
 
           <Text
             style={{
+              color: "#FFF",
               // fontSize: "4em",
               lineHeight: 1,
             }}
@@ -44,18 +46,40 @@ const QuoteSection = () => {
         </Quote>
         <Text style={{ color: "#FFF" }}>
           A versatile developer experienced in{" "}
-          <Highlighter backgroundColor="#FF5E5E">cross-platform</Highlighter>{" "}
-          apps, <Highlighter backgroundColor="#FF5E5E">web</Highlighter>{" "}
+          <Highlighter backgroundColor="#FF5E5E">
+            {" "}
+            <Text style={{ color: "#FFF" }}>cross-platform</Text>
+          </Highlighter>{" "}
+          apps,{" "}
+          <Highlighter backgroundColor="#FF5E5E">
+            <Text style={{ color: "#FFF" }}>web</Text>
+          </Highlighter>{" "}
           development, and{" "}
-          <Highlighter backgroundColor="#FF5E5E">backend</Highlighter> APIs,
-          specializing in{" "}
-          <Highlighter backgroundColor="#FFC45E">AI</Highlighter> data analysis
-          and signal processing (
-          <Highlighter backgroundColor="#FFC45E">NILM</Highlighter>). Skilled in{" "}
-          <Highlighter backgroundColor="#75CAF4">workflow</Highlighter>{" "}
+          <Highlighter backgroundColor="#FF5E5E">
+            {" "}
+            <Text style={{ color: "#FFF" }}>backend</Text>
+          </Highlighter>{" "}
+          APIs, specializing in{" "}
+          <Highlighter backgroundColor="#FFC45E">
+            {" "}
+            <Text style={{ color: "#FFF" }}>AI</Text>
+          </Highlighter>{" "}
+          data analysis and signal processing (
+          <Highlighter backgroundColor="#FFC45E">
+            {" "}
+            <Text style={{ color: "#FFF" }}>NILM</Text>
+          </Highlighter>
+          ). Skilled in{" "}
+          <Highlighter backgroundColor="#75CAF4">
+            {" "}
+            <Text style={{ color: "#FFF" }}>workflow</Text>
+          </Highlighter>{" "}
           automation (Git, CI/CD, deployment) and passionate about{" "}
-          <Highlighter backgroundColor="#B4FFD8">UI/UX</Highlighter> design
-          (Figma).
+          <Highlighter backgroundColor="#B4FFD8">
+            {" "}
+            <Text style={{ color: "#FFF" }}>UI/UX</Text>
+          </Highlighter>{" "}
+          design (Figma).
         </Text>
       </Box>
 

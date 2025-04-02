@@ -12,7 +12,7 @@ const Home = () => {
         <Flex gap="6" py="5" direction="row" style={{ height: "100%" }}>
           {/* 左半部分：在手機時 class 設定為 left-part，寬度在手機下 100% */}
           <Flex
-            gap={{ initial: "5", xs: "9" }}
+            gap={{ initial: "8", xs: "9" }}
             className="left-part"
             justify="center"
             style={{

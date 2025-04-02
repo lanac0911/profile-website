@@ -50,7 +50,7 @@ const GridMenu = () => {
   return (
     <>
       <Grid
-        columns={{ initial: "1", xs: "2", sm: "4", lg: "4" }}
+        columns={{ initial: "2", xs: "2", sm: "4", lg: "4" }}
         gap="4"
         width="5"
         style={{
@@ -214,6 +214,9 @@ const GridMenu = () => {
             border-bottom: 0.5px solid #f5f5f5;
             display: flex;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1;
           }
           .header-dots {
             display: flex;
