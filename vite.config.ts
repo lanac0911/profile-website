@@ -4,7 +4,11 @@ import { resolve } from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: 'profile-website',
   plugins: [react()],
+  server: {
+    host: true, // 將伺服器綁定到 0.0.0.0，使其他設備可訪問
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
