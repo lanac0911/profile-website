@@ -45,7 +45,7 @@ const TabsComponent = ({
   activeTab: string;
 }) => {
   const activeButonStyle = {
-    backgroundColor: "#D9D9D9",
+    backgroundColor: "#DEDEDE",
     padding: 5,
     paddingLeft: 12,
     paddingRight: 12,
