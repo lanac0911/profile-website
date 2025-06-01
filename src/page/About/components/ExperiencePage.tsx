@@ -90,7 +90,7 @@ const ExperiencePage = () => {
         <Highlighter backgroundColor={ColorSets.hightlightBlue}>
           My.Projects
         </Highlighter>{" "}
-        看更多
+        看作品
       </Text>
     );
 
@@ -156,7 +156,7 @@ const ExperiencePage = () => {
 
       {/* See More */}
       <Flex
-        position="fixed"
+        // position="fixed"
         gap={".5em"}
         bottom={"1em"}
         right={"2.5em"}

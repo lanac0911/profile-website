@@ -1,4 +1,4 @@
-import { Badge, Box, Text } from "@radix-ui/themes";
+import { Badge, Box, Flex, Text } from "@radix-ui/themes";
 import { contentFontSizeBreakpoint, contentTitleFontSizeBreakpoint } from "..";
 import { useLanguage } from "@component/Language/LanguageContext";
 
@@ -41,7 +41,7 @@ const EducationPage = () => {
       period: "2023 - 2025",
       specialization: [
         "AI",
-        "NILM (非侵入式負載分解，Non-Intrusive Load Monitoring)",
+        "NILM (非侵入式負載分解)",
         "訊號處理",
       ],
       description: "研究領域為 ",
@@ -72,7 +72,12 @@ const EducationPage = () => {
                 >
                   {item.degree}
                 </Text>
-                <Text as="p" size={contentFontSizeBreakpoint} color="gray" mb=".5em">
+                <Text
+                  as="p"
+                  size={contentFontSizeBreakpoint}
+                  color="gray"
+                  mb=".5em"
+                >
                   {item.institution} | {item.period}
                 </Text>
 
@@ -85,16 +90,18 @@ const EducationPage = () => {
                     {item.description}
                   </Text>
                 </Text>
-                {item.specialization.map((spe, speidx) => (
-                  <>
-                    <Badge mx="1" color="orange" style={badgeTheme}>
-                      {spe}
-                    </Badge>
-                    <Text>
-                      {speidx !== item.specialization.length - 1 ? ", " : ""}
-                    </Text>
-                  </>
-                ))}
+                <Flex wrap="wrap" gap=".3em" mt=".3em">
+                  {item.specialization.map((spe, speidx) => (
+                    <>
+                      <Badge mx="1" color="orange" style={badgeTheme}>
+                        {spe}
+                      </Badge>
+                      <Text>
+                        {speidx !== item.specialization.length - 1 ? ", " : ""}
+                      </Text>
+                    </>
+                  ))}
+                </Flex>
               </div>
             </li>
           ))}
