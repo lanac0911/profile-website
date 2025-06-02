@@ -52,9 +52,7 @@ const GridMenu = () => {
       <Grid
         columns={{ initial: "2", xs: "2", sm: "4", lg: "4" }}
         gap="4"
-        width="5"
         style={{
-          justifySelf: "flex-end",
           bottom: 0,
           position: "relative",
         }}
@@ -179,8 +177,8 @@ const GridMenu = () => {
             z-index: 1;
           }
           .icon-large {
-            width: 32px;
-            height: 32px;
+            width: 2.7em;
+            height: 2.7em;
           }
           /* Dialog 視窗 */
           .dialog-window {

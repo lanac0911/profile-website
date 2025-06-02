@@ -1,4 +1,16 @@
 import React, { useState, useEffect } from "react";
+import styled, { keyframes } from "styled-components";
+
+const blink = keyframes`
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+`;
+
+const Cursor = styled.span`
+  display: inline-block;
+  animation: ${blink} 1s step-end infinite;
+`;
 
 interface TypingEffectProps {
   text: string;
@@ -33,26 +45,9 @@ const TypingEffect: React.FC<TypingEffectProps> = ({
   }, [index, text, speed, delay]);
 
   return (
-    <span style={{  }}>
+    <span>
       {displayedText}
-      <span
-        className="cursor"
-        style={{
-          display: "inline-block",
-          width: "1ch",
-          animation: "blink 1s step-end infinite",
-        }}
-      >
-        |
-      </span>
-      {/* 可將以下 <style> 放入全域 CSS */}
-      <style>{`
-        @keyframes blink {
-          0% { opacity: 1; }
-          50% { opacity: 0; }
-          100% { opacity: 1; }
-        }
-      `}</style>
+      <Cursor>|</Cursor>
     </span>
   );
 };

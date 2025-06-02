@@ -1,15 +1,20 @@
 import { Box } from "@radix-ui/themes";
-import React from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 interface WindowSectionProps {
   children: React.ReactNode;
   textCenter?: boolean;
   style?: React.CSSProperties;
   className?: string;
-  /** 是否啟用 hover 效果 */
   hoverEffect?: boolean;
-  /** hover 時要顯示的內容 */
   hoverContent?: React.ReactNode;
+  headerBgColor?: string;
+  headerBorderColor?: string;
+  frosted?: boolean;
 }
 
 const WindowSection: React.FC<WindowSectionProps> = ({
@@ -19,20 +24,40 @@ const WindowSection: React.FC<WindowSectionProps> = ({
   className,
   hoverEffect = false,
   hoverContent,
+  headerBgColor = "#f5f5f5",
+  headerBorderColor = "#f5f5f5",
+  frosted = false,
 }) => {
+  const defaultRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState<number>();
+
+  // ⬇️ 自動追蹤 default-content 高度，並同步給 hover-content
+  useEffect(() => {
+    if (!defaultRef.current) return;
+    const observer = new ResizeObserver(() => {
+      setContentHeight(defaultRef.current?.offsetHeight || 0);
+    });
+    observer.observe(defaultRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <Box
-        className={`window-section ${className ? className : ""}`}
+        className={`window-section ${className || ""}`}
         style={{
           borderRadius: "8px",
           overflow: "hidden",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-          border: "1px solid #ddd",
+          backdropFilter: frosted ? "blur(10px)" : "none",
+          backgroundColor: frosted ? "rgba(0, 0, 0, 0.1)" : "#fff",
+          boxShadow: frosted ? "0 4px 30px rgba(0, 0, 0, 0.2)" : "none",
+          border: frosted
+            ? "1px solid rgba(0,0,0,0.4)"
+            : "1px solid #ddd",
           ...style,
         }}
       >
-        {/* Header：保留上方三個圓點 */}
+        {/* Header */}
         <Box
           style={{
             display: "flex",
@@ -41,9 +66,8 @@ const WindowSection: React.FC<WindowSectionProps> = ({
             padding: "8px",
             top: 0,
             zIndex: 1,
-
-            backgroundColor: "#f5f5f5",
-            borderBottom: "0.5px solid #f5f5f5",
+            backgroundColor: headerBgColor,
+            borderBottom: `0.5px solid ${headerBorderColor}`,
             width: "100%",
           }}
         >
@@ -84,7 +108,7 @@ const WindowSection: React.FC<WindowSectionProps> = ({
           </Box>
         </Box>
 
-        {/* 內容區塊 */}
+        {/* Content */}
         <Box
           className={`content-area ${hoverEffect ? "hover-enabled" : ""}`}
           style={{
@@ -93,12 +117,21 @@ const WindowSection: React.FC<WindowSectionProps> = ({
             flexDirection: "column",
             alignItems: textCenter ? "center" : "unset",
             justifyContent: "center",
-            // 設定一個固定的最小高度，避免 hover 內容過少時區塊縮小
-            minHeight: "6em",
           }}
         >
-          <div className="default-content">{children}</div>
-          {hoverEffect && <div className="hover-content">{hoverContent}</div>}
+          <div className="default-content" ref={defaultRef}>
+            {children}
+          </div>
+          {hoverEffect && (
+            <div
+              className="hover-content"
+              style={{
+                minHeight: contentHeight,
+              }}
+            >
+              {hoverContent}
+            </div>
+          )}
         </Box>
       </Box>
 
@@ -134,6 +167,7 @@ const WindowSection: React.FC<WindowSectionProps> = ({
             z-index: 1;
             display: none;
             transition: opacity 0.3s ease-out;
+            overflow: hidden;
           }
           .content-area.hover-enabled:hover .default-content {
             display: none;

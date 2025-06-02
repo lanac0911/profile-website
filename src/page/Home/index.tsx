@@ -7,12 +7,11 @@ import GridMenu from "./components/GridMenu";
 const Home = () => {
   return (
     <Background>
-      {/* 最外層 Section 使用 100vh 填滿視窗高度 */}
       <Section px={{ initial: "7", xs: "8" }} height="100vh">
         <Flex gap="6" py="5" direction="row" style={{ height: "100%" }}>
-          {/* 左半部分：在手機時 class 設定為 left-part，寬度在手機下 100% */}
+          {/* 左側區塊 */}
           <Flex
-            gap={{ initial: "8", xs: "9" }}
+            gap="6"
             className="left-part"
             justify="center"
             style={{
@@ -22,18 +21,26 @@ const Home = () => {
               flexDirection: "column",
             }}
           >
-            {/* 上半部 60% */}
-            <QuoteSection />
+            {/* Quote */}
+            <Box className="section-quote">
+              <QuoteSection />
+            </Box>
 
-            {/* 下半部 40% */}
-            <GridMenu />
+            {/* ✅ 手機顯示的 CodeSection（簡化版） */}
+            <Box className="mobile-only">
+              <CodeSection isMobile />
+            </Box>
+
+            {/* GridMenu */}
+            <Box className="section-grid">
+              <GridMenu />
+            </Box>
           </Flex>
 
-          {/* 右半部分：在手機下隱藏 */}
+          {/* ✅ 桌面右側 CodeSection */}
           <Box
-            className="right-part"
+            className="section-code desktop-only"
             style={{
-              width: "40%",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -44,18 +51,29 @@ const Home = () => {
         </Flex>
       </Section>
 
-      {/* CSS 調整：在手機狀態下隱藏右半部分並讓左半部分擴展至 100% 寬度 */}
       <style>
         {`
-          @media (max-width: 768px) {
-            .right-part {
-              display: none !important;
-            }
-            .left-part {
-              width: 100% !important;
-            }
-          }
-      `}
+      @media (max-width: 768px) {
+        .desktop-only {
+          display: none !important;
+        }
+        .mobile-only {
+          display: block !important;
+        }
+        .left-part {
+          width: 100% !important;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .desktop-only {
+          display: block !important;
+        }
+        .mobile-only {
+          display: none !important;
+        }
+      }
+    `}
       </style>
     </Background>
   );

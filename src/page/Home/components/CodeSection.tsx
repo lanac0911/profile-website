@@ -34,80 +34,88 @@ const codestyle = {
   constName: "#4FC1FF",
 };
 
-const CodeSection = () => {
+const CodeSection = ({ isMobile = false }: { isMobile?: boolean }) => {
   return (
     <WindowSection
       textCenter={false}
+      headerBgColor="#0A0E1C"
+      headerBorderColor="#0A0E1C"
+      frosted
+      hoverContent={<span>🎉 Hovering!</span>}
       style={{
         width: "100%",
         height: "100%",
       }}
     >
-      {/* import 人格特質 */}
-      <Text size="1" align="left">
-        <Text size="1" align="left" style={{ color: codestyle.importFrom }}>
-          import
-        </Text>{" "}
-        <Text
-          size="1"
-          align="left"
-          style={{ color: codestyle.brackets }}
-        >{`{`}</Text>{" "}
-      </Text>
-      {me.personality.map((per, idx) => (
-        <Text as="p" key={idx} style={{ textAlign: "left", lineHeight: 1 }}>
-          <Text size="1" style={{ color: codestyle.attribute }}>
-            {"\u00A0\u00A0\u00A0\u00A0"}
-            {per}
+      {!isMobile && (
+        <>
+          {/* import 人格特質 */}
+          <Text size="1" align="left">
+            <Text size="1" align="left" style={{ color: codestyle.importFrom }}>
+              import
+            </Text>{" "}
+            <Text
+              size="1"
+              align="left"
+              style={{ color: codestyle.brackets }}
+            >{`{`}</Text>{" "}
           </Text>
-          <Text size="1" style={{ color: codestyle.white }}>
-            ,
+          {me.personality.map((per, idx) => (
+            <Text as="p" key={idx} style={{ textAlign: "left", lineHeight: 1 }}>
+              <Text size="1" style={{ color: codestyle.attribute }}>
+                {"\u00A0\u00A0\u00A0\u00A0"}
+                {per}
+              </Text>
+              <Text size="1" style={{ color: codestyle.white }}>
+                ,
+              </Text>
+            </Text>
+          ))}
+          <Text size="1">
+            <Text size="1" style={{ color: codestyle.brackets }}>{`}`}</Text>{" "}
+            <Text size="1" style={{ color: codestyle.importFrom }}>
+              from
+            </Text>{" "}
+            <Text size="1" style={{ color: codestyle.library }}>
+              'Personality'
+            </Text>
           </Text>
-        </Text>
-      ))}
-      <Text size="1">
-        <Text size="1" style={{ color: codestyle.brackets }}>{`}`}</Text>{" "}
-        <Text size="1" style={{ color: codestyle.importFrom }}>
-          from
-        </Text>{" "}
-        <Text size="1" style={{ color: codestyle.library }}>
-          'Personality'
-        </Text>
-      </Text>
-      <br />
-      {/* import 'Skills' */}
-      <Text size="1" align="left">
-        <Text size="1" align="left" style={{ color: codestyle.importFrom }}>
-          import
-        </Text>{" "}
-        <Text
-          size="1"
-          align="left"
-          style={{ color: codestyle.brackets }}
-        >{`{`}</Text>{" "}
-      </Text>
-      {me.skills.map((per, idx) => (
-        <Text as="p" key={idx} style={{ textAlign: "left", lineHeight: 1 }}>
-          <Text size="1" style={{ color: codestyle.attribute }}>
-            {"\u00A0\u00A0\u00A0\u00A0"}
-            {per}
+          <br />
+          {/* import 'Skills' */}
+          <Text size="1" align="left">
+            <Text size="1" align="left" style={{ color: codestyle.importFrom }}>
+              import
+            </Text>{" "}
+            <Text
+              size="1"
+              align="left"
+              style={{ color: codestyle.brackets }}
+            >{`{`}</Text>{" "}
           </Text>
-          <Text size="1" style={{ color: codestyle.white }}>
-            ,
+          {me.skills.map((per, idx) => (
+            <Text as="p" key={idx} style={{ textAlign: "left", lineHeight: 1 }}>
+              <Text size="1" style={{ color: codestyle.attribute }}>
+                {"\u00A0\u00A0\u00A0\u00A0"}
+                {per}
+              </Text>
+              <Text size="1" style={{ color: codestyle.white }}>
+                ,
+              </Text>
+            </Text>
+          ))}
+          <Text size="1">
+            <Text size="1" style={{ color: codestyle.brackets }}>{`}`}</Text>{" "}
+            <Text size="1" style={{ color: codestyle.importFrom }}>
+              from
+            </Text>{" "}
+            <Text size="1" style={{ color: codestyle.library }}>
+              'Skills'
+            </Text>
           </Text>
-        </Text>
-      ))}
-      <Text size="1">
-        <Text size="1" style={{ color: codestyle.brackets }}>{`}`}</Text>{" "}
-        <Text size="1" style={{ color: codestyle.importFrom }}>
-          from
-        </Text>{" "}
-        <Text size="1" style={{ color: codestyle.library }}>
-          'Skills'
-        </Text>
-      </Text>
+          <br />
+        </>
+      )}
       {/* import 'Class' */}
-      <br />
       <Text size="1">
         <Text size="1" style={{ color: codestyle.class }}>
           class
@@ -117,14 +125,15 @@ const CodeSection = () => {
         </Text>{" "}
         <Text size="1" style={{ color: codestyle.brackets }}>{`{`}</Text>
       </Text>
-      {/* 特質 */}
-      <Text as="p" size="1" style={{ color: codestyle.comment }} mt="1">
+      {/* <Text as="p" size="1" style={{ color: codestyle.comment }} mt="1">
         {"\u00A0\u00A0"}// 特質
-      </Text>{" "}
+      </Text>{" "} */}
       <Text>
         <Text size="1" style={{ lineHeight: 1 }}>
           {"\u00A0\u00A0"}
+          <br />
           <Text size="1" style={{ color: codestyle.className, lineHeight: 1 }}>
+            {"\u00A0\u00A0"}
             personality
           </Text>{" "}
           <Text size="1" style={{ color: codestyle.white }}>
@@ -151,13 +160,13 @@ const CodeSection = () => {
           <Text size="1" style={{ color: codestyle.white }}>
             ;
           </Text>
+          <Text as="span" size="1" style={{ color: codestyle.comment }} mt="1">
+            {"\u00A0\u00A0"}// 特質
+          </Text>
         </Text>
       </Text>
       <br />
-      {/* (主要) 專業技能 */}
-      <Text as="p" size="1" style={{ color: codestyle.comment }}>
-        {"\u00A0\u00A0"}// (主要) 專業技能
-      </Text>{" "}
+
       <Text>
         <Text size="1">
           {"\u00A0\u00A0"}
@@ -186,6 +195,10 @@ const CodeSection = () => {
             ;
           </Text>
         </Text>
+        {/* (主要) 專業技能 */}
+        <Text as="span" size="1" style={{ color: codestyle.comment }}>
+          {"\u00A0\u00A0"}// 技能
+        </Text>{" "}
       </Text>
       <Box
         style={{
@@ -193,10 +206,6 @@ const CodeSection = () => {
           textAlign: "left",
         }}
       >
-        <Text size="1" style={{ color: codestyle.comment }}>
-          {"\u00A0\u00A0"} // 學歷
-        </Text>{" "}
-        <br />
         <Text size="1">
           {"\u00A0\u00A0"}
           <Text size="1" style={{ color: codestyle.className }}>
@@ -239,6 +248,9 @@ const CodeSection = () => {
         <Text size="1" style={{ color: codestyle.white }}>
           ;
         </Text>
+        <Text size="1" style={{ color: codestyle.comment }}>
+          {"\u00A0\u00A0"} // 學歷
+        </Text>{" "}
       </Box>
       <Text>
         <Text size="1" style={{ color: codestyle.brackets }}>{`}`}</Text>
@@ -258,28 +270,6 @@ const CodeSection = () => {
       >
         <TypingEffect text="const me = new AboutMe();" speed={150} />
       </Text>
-      {/* <Text>
-        <Text size="1" style={{ color: codestyle.class }}>
-          const
-        </Text>{" "}
-        <Text size="1" style={{ color: codestyle.constName }}>
-          me
-        </Text>{" "}
-        <Text size="1" style={{ color: codestyle.white }}>
-          =
-        </Text>{" "}
-        <Text size="1" style={{ color: codestyle.class }}>
-          new
-        </Text>{" "}
-        <Text size="1" style={{ color: codestyle.className }}>
-          AboutMe
-        </Text>
-        <Text size="1" style={{ color: codestyle.brackets }}>{`(`}</Text>
-        <Text size="1" style={{ color: codestyle.brackets }}>{`)`}</Text>{" "}
-        <Text size="1" style={{ color: codestyle.white }}>
-          ;
-        </Text>
-      </Text> */}
     </WindowSection>
   );
 };
