@@ -5,6 +5,8 @@ import { ColorSets } from "@/styles/color";
 import { Building2, CalendarClock, ArrowBigRightDash } from "lucide-react";
 import Highlighter from "@/components/Highlighter";
 import { contentFontSizeBreakpoint, contentTitleFontSizeBreakpoint } from "..";
+import { motion } from "framer-motion";
+import { fadeInVariant } from "@/styles/animate";
 
 const ExperiencePage = () => {
   const { language } = useLanguage();
@@ -96,20 +98,42 @@ const ExperiencePage = () => {
 
   return (
     <Flex direction={{ initial: "column", md: "column" }} gap="5" p="5">
-      {exp.map((exp, index) => (
-        <Box key={index} style={{ marginBottom: "2rem" }}>
-          <Flex justify="between" align="center">
-            <Quote accentColor={ColorSets.tabGray} textColor="#000">
-              <Text
-                size={contentTitleFontSizeBreakpoint}
-                style={{ fontWeight: "bold" }}
-              >
-                {exp.title}
-              </Text>
-            </Quote>
-            {/* 期間 */}
-            <Flex gap=".5em" align="center">
-              <CalendarClock size={15} color={ColorSets.quoteGray} />
+      <motion.div
+        key={language}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInVariant}
+      >
+        {exp.map((exp, index) => (
+          <Box key={index} style={{ marginBottom: "2rem" }}>
+            <Flex justify="between" align="center">
+              <Quote accentColor={ColorSets.tabGray} textColor="#000">
+                <Text
+                  size={contentTitleFontSizeBreakpoint}
+                  style={{ fontWeight: "bold" }}
+                >
+                  {exp.title}
+                </Text>
+              </Quote>
+              {/* 期間 */}
+              <Flex gap=".5em" align="center">
+                <CalendarClock size={15} color={ColorSets.quoteGray} />
+                <Code
+                  color="gray"
+                  style={{
+                    paddingRight: "0.5rem",
+                    paddingLeft: "0.5rem",
+                    borderRadius: 4,
+                  }}
+                >
+                  <Text size={contentFontSizeBreakpoint}>{exp.period}</Text>
+                </Code>
+              </Flex>
+            </Flex>
+            {/* 公司 */}
+            <Flex gap=".5em" align="center" mt=".5rem">
+              <Building2 size={15} color={ColorSets.quoteGray} />
               <Code
                 color="gray"
                 style={{
@@ -118,53 +142,27 @@ const ExperiencePage = () => {
                   borderRadius: 4,
                 }}
               >
-                <Text size={contentFontSizeBreakpoint}>{exp.period}</Text>
+                <Text size={contentFontSizeBreakpoint}>{exp.company}</Text>
               </Code>
             </Flex>
-          </Flex>
-          {/* 公司 */}
-          <Flex gap=".5em" align="center" mt=".5rem">
-            <Building2 size={15} color={ColorSets.quoteGray} />
-            <Code
-              color="gray"
+
+            {/* Decriptions */}
+            <Box
               style={{
-                paddingRight: "0.5rem",
-                paddingLeft: "0.5rem",
-                borderRadius: 4,
+                marginTop: "0.5rem",
+                paddingLeft: "1rem",
+                lineHeight: 1.5,
               }}
             >
-              <Text size={contentFontSizeBreakpoint}>{exp.company}</Text>
-            </Code>
-          </Flex>
-
-          {/* Decriptions */}
-          <Box
-            style={{
-              marginTop: "0.5rem",
-              paddingLeft: "1rem",
-              lineHeight: 1.5,
-            }}
-          >
-            {exp.description.map((item, idx) => (
-              <li key={idx}>
-                <Text size={contentFontSizeBreakpoint}>{item}</Text>
-              </li>
-            ))}
+              {exp.description.map((item, idx) => (
+                <li key={idx}>
+                  <Text size={contentFontSizeBreakpoint}>{item}</Text>
+                </li>
+              ))}
+            </Box>
           </Box>
-        </Box>
-      ))}
-
-      {/* See More */}
-      <Flex
-        // position="fixed"
-        gap={".5em"}
-        bottom={"1em"}
-        right={"2.5em"}
-        align="center"
-      >
-        {seeMoreText}
-        <ArrowBigRightDash color={"#888"} size={20} />
-      </Flex>
+        ))}
+      </motion.div>
     </Flex>
   );
 };

@@ -11,6 +11,8 @@ import {
 import Highlighter from "@component/Highlighter";
 import { ColorSets } from "@/styles/color";
 import { contentFontSizeBreakpoint } from "..";
+import { motion } from "framer-motion";
+import { fadeInVariant } from "@/styles/animate";
 
 const MePage = () => {
   const { language } = useLanguage();
@@ -103,69 +105,77 @@ const MePage = () => {
   );
 
   return (
-    <Flex
-      direction={{ initial: "column", md: "row" }}
-      align="center"
-      gap="5"
-      width="100%"
+    <motion.div
+      key={language}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeInVariant}
     >
-      <Flex style={{ flex: 1, flexDirection: "column" }} gap={"2em"} mt="1em">
-        {language === "en" ? <FirstParagraph_en /> : <FirstParagraph_ch />}
-        {/* 個性與興趣 */}
-        <Box>
-          <Text
-            as="p"
-            style={{ fontWeight: 900 }}
-            size={contentFontSizeBreakpoint}
-          >
-            {language === "en" ? "Personality & Interests" : "個性與興趣 "}
-          </Text>
+      <Flex
+        direction={{ initial: "column", md: "row" }}
+        align="center"
+        gap="5"
+        width="100%"
+      >
+        <Flex style={{ flex: 1, flexDirection: "column" }} gap={"2em"} mt="1em">
+          {language === "en" ? <FirstParagraph_en /> : <FirstParagraph_ch />}
 
-          {/* 內文 */}
-          {language === "en" ? <Secondaragraph_en /> : <Secondaragraph_ch />}
-        </Box>
+          {/* 個性與興趣 */}
+          <Box>
+            <Text
+              as="p"
+              style={{ fontWeight: 900 }}
+              size={contentFontSizeBreakpoint}
+            >
+              {language === "en" ? "Personality & Interests" : "個性與興趣 "}
+            </Text>
 
-        {/* 語言 */}
-        <Box>
-          <Text
-            as="p"
-            style={{ fontWeight: 900 }}
-            size={contentFontSizeBreakpoint}
-          >
-            {language === "en" ? "Languages" : "語言 "}
-          </Text>
-          {/* 內文 */}
-          {language === "en" ? <Secondaragraph_en /> : <Secondaragraph_ch />}
-        </Box>
+            {/* 內文 */}
+            {language === "en" ? <Secondaragraph_en /> : <Secondaragraph_ch />}
+          </Box>
 
-        {/* 備註 */}
-        <Box>
-          <Text
-            as="p"
-            style={{ fontWeight: 900 }}
-            size={contentFontSizeBreakpoint}
-          >
-            {language === "en" ? "Note" : "備註 "}
-          </Text>
+          {/* 語言 */}
+          <Box>
+            <Text
+              as="p"
+              style={{ fontWeight: 900 }}
+              size={contentFontSizeBreakpoint}
+            >
+              {language === "en" ? "Languages" : "語言 "}
+            </Text>
+            {/* 內文 */}
+            {language === "en" ? <Secondaragraph_en /> : <Secondaragraph_ch />}
+          </Box>
 
-          {/* 內文 */}
-          {language === "en" ? <Note_en /> : <Note_ch />}
+          {/* 備註 */}
+          <Box>
+            <Text
+              as="p"
+              style={{ fontWeight: 900 }}
+              size={contentFontSizeBreakpoint}
+            >
+              {language === "en" ? "Note" : "備註 "}
+            </Text>
+
+            {/* 內文 */}
+            {language === "en" ? <Note_en /> : <Note_ch />}
+          </Box>
+        </Flex>
+        <Box style={{ width: "250px", maxWidth: "100%" }}>
+          <img
+            src={myPhoto}
+            alt="Lana's photo"
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "auto",
+              borderRadius: "var(--radius-3)",
+            }}
+          />
         </Box>
       </Flex>
-
-      <Box style={{ width: "250px", maxWidth: "100%" }}>
-        <img
-          src={myPhoto}
-          alt="Lana's photo"
-          style={{
-            objectFit: "cover",
-            width: "100%",
-            height: "auto",
-            borderRadius: "var(--radius-3)",
-          }}
-        />
-      </Box>
-    </Flex>
+    </motion.div>
   );
 };
 

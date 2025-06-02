@@ -1,6 +1,8 @@
 import { Badge, Box, Flex, Text } from "@radix-ui/themes";
 import { contentFontSizeBreakpoint, contentTitleFontSizeBreakpoint } from "..";
 import { useLanguage } from "@component/Language/LanguageContext";
+import { motion } from "framer-motion";
+import { fadeInVariant } from "@/styles/animate";
 
 const EducationPage = () => {
   const { language } = useLanguage();
@@ -39,11 +41,7 @@ const EducationPage = () => {
       degree: "資訊工程學系 碩士",
       institution: "國立中興大學",
       period: "2023 - 2025",
-      specialization: [
-        "AI",
-        "NILM (非侵入式負載分解)",
-        "訊號處理",
-      ],
+      specialization: ["AI", "NILM (非侵入式負載分解)", "訊號處理"],
       description: "研究領域為 ",
     },
     {
@@ -61,51 +59,61 @@ const EducationPage = () => {
   return (
     <Box style={{ padding: "2rem" }}>
       <Box className="timeline">
-        <ul className="timeline-list">
-          {educationItems.map((item, index) => (
-            <li key={index} className="timeline-item">
-              <div className="timeline-content">
-                <Text
-                  as="p"
-                  size={contentTitleFontSizeBreakpoint}
-                  style={{ fontWeight: "bold" }}
-                >
-                  {item.degree}
-                </Text>
-                <Text
-                  as="p"
-                  size={contentFontSizeBreakpoint}
-                  color="gray"
-                  mb=".5em"
-                >
-                  {item.institution} | {item.period}
-                </Text>
-
-                <Text size={contentFontSizeBreakpoint}>
+        <motion.div
+          key={language}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInVariant}
+        >
+          <ul className="timeline-list">
+            {educationItems.map((item, index) => (
+              <li key={index} className="timeline-item">
+                <div className="timeline-content">
+                  <Text
+                    as="p"
+                    size={contentTitleFontSizeBreakpoint}
+                    style={{ fontWeight: "bold" }}
+                  >
+                    {item.degree}
+                  </Text>
                   <Text
                     as="p"
                     size={contentFontSizeBreakpoint}
-                    style={{ marginTop: "0.5rem", lineHeight: 1.5 }}
+                    color="gray"
+                    mb=".5em"
                   >
-                    {item.description}
+                    {item.institution} | {item.period}
                   </Text>
-                </Text>
-                <Flex wrap="wrap" gap=".3em" mt=".3em">
-                  {item.specialization.map((spe, speidx) => (
-                    <>
-                      <Badge mx="1" color="orange" style={badgeTheme}>
-                        {spe}
-                      </Badge>
-                      <Text>
-                        {speidx !== item.specialization.length - 1 ? ", " : ""}
-                      </Text>
-                    </>
-                  ))}
-                </Flex>
-              </div>
-            </li>
-          ))}
-        </ul>
+
+                  <Text size={contentFontSizeBreakpoint}>
+                    <Text
+                      as="p"
+                      size={contentFontSizeBreakpoint}
+                      style={{ marginTop: "0.5rem", lineHeight: 1.5 }}
+                    >
+                      {item.description}
+                    </Text>
+                  </Text>
+                  <Flex wrap="wrap" gap=".3em" mt=".3em">
+                    {item.specialization.map((spe, speidx) => (
+                      <>
+                        <Badge mx="1" color="orange" style={badgeTheme}>
+                          {spe}
+                        </Badge>
+                        <Text>
+                          {speidx !== item.specialization.length - 1
+                            ? ", "
+                            : ""}
+                        </Text>
+                      </>
+                    ))}
+                  </Flex>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
       </Box>
       <style>{`
         /* 容器設定：留出內邊距給左側時間軸 */
