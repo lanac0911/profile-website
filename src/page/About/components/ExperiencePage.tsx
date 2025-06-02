@@ -2,8 +2,7 @@ import { Box, Code, Flex, Text } from "@radix-ui/themes";
 import { useLanguage } from "@component/Language/LanguageContext";
 import Quote from "@component/Quote";
 import { ColorSets } from "@/styles/color";
-import { Building2, CalendarClock, ArrowBigRightDash } from "lucide-react";
-import Highlighter from "@/components/Highlighter";
+import { Building2, CalendarClock } from "lucide-react";
 import { contentFontSizeBreakpoint, contentTitleFontSizeBreakpoint } from "..";
 import { motion } from "framer-motion";
 import { fadeInVariant } from "@/styles/animate";
@@ -64,37 +63,6 @@ const ExperiencePage = () => {
   ];
 
   const exp = language === "en" ? experiences_en : experiences_ch;
-  const seeMoreText =
-    language === "en" ? (
-      <Text
-        style={{
-          color: "#888",
-          fontStyle: "italic",
-          textDecoration: "underline",
-        }}
-      >
-        Go To{" "}
-        <Highlighter backgroundColor={ColorSets.hightlightBlue}>
-          My.Projects
-        </Highlighter>{" "}
-        to see more
-      </Text>
-    ) : (
-      <Text
-        style={{
-          color: "#888",
-          fontStyle: "italic",
-          textDecoration: "underline",
-        }}
-      >
-        {" "}
-        到{" "}
-        <Highlighter backgroundColor={ColorSets.hightlightBlue}>
-          My.Projects
-        </Highlighter>{" "}
-        看作品
-      </Text>
-    );
 
   return (
     <Flex direction={{ initial: "column", md: "column" }} gap="5" p="5">
