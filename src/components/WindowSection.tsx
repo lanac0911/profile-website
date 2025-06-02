@@ -1,9 +1,5 @@
 import { Box } from "@radix-ui/themes";
-import React, {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface WindowSectionProps {
   children: React.ReactNode;
@@ -51,9 +47,7 @@ const WindowSection: React.FC<WindowSectionProps> = ({
           backdropFilter: frosted ? "blur(10px)" : "none",
           backgroundColor: frosted ? "rgba(0, 0, 0, 0.1)" : "#fff",
           boxShadow: frosted ? "0 4px 30px rgba(0, 0, 0, 0.2)" : "none",
-          border: frosted
-            ? "1px solid rgba(0,0,0,0.4)"
-            : "1px solid #ddd",
+          border: frosted ? "1px solid rgba(0,0,0,0.4)" : "1px solid #ddd",
           ...style,
         }}
       >
@@ -65,7 +59,6 @@ const WindowSection: React.FC<WindowSectionProps> = ({
             alignItems: "center",
             padding: "8px",
             top: 0,
-            zIndex: 1,
             backgroundColor: headerBgColor,
             borderBottom: `0.5px solid ${headerBorderColor}`,
             width: "100%",
@@ -137,6 +130,9 @@ const WindowSection: React.FC<WindowSectionProps> = ({
 
       {hoverEffect && (
         <style>{`
+          .dialog-header{
+           z-index: 13 !important;
+          }
           .content-area.hover-enabled {
             position: relative;
             overflow: hidden;
