@@ -25,6 +25,9 @@ import { TbWaveSawTool } from "react-icons/tb";
 import { LuBrain } from "react-icons/lu";
 import { FaCubesStacked } from "react-icons/fa6";
 import { BiServer } from "react-icons/bi";
+import { motion } from "framer-motion";
+import { fadeInVariant } from "@/styles/animate";
+
 
 const programmingLanguages = [
   { name: "TypeScript", icon: BiLogoTypescript, color: "#3178C6" },
@@ -72,35 +75,58 @@ const aiAndResearch = [
 
 const designTools = [{ name: "Figma", icon: FiFigma, color: "#F24E1E" }];
 
+const techSections = [
+  {
+    title: "Programming Languages",
+    icon: Code2,
+    list: programmingLanguages,
+  },
+  {
+    title: "Frontend Development",
+    icon: PiDesktopDuotone,
+    list: frontendDevelopment,
+  },
+  {
+    title: "Backend Development",
+    icon: Server,
+    list: backendDevelopment,
+  },
+  {
+    title: "Tools & Technologies",
+    icon: Wrench,
+    list: toolsAndTechnologies,
+  },
+  {
+    title: "AI & Research",
+    icon: LuBrain,
+    list: aiAndResearch,
+  },
+  {
+    title: "Design",
+    icon: Paintbrush2,
+    list: designTools,
+  },
+];
+
 const TechStackSection = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <TerminalBox
-        title="Programming Languages"
-        titleIcon={Code2}
-        list={programmingLanguages}
-      />
-      <TerminalBox
-        title="Frontend Development"
-        titleIcon={PiDesktopDuotone}
-        list={frontendDevelopment}
-      />
-      <TerminalBox
-        title="Backend Development"
-        titleIcon={Server}
-        list={backendDevelopment}
-      />
-      <TerminalBox
-        title="Tools & Technologies"
-        titleIcon={Wrench}
-        list={toolsAndTechnologies}
-      />
-      <TerminalBox
-        title="AI & Research"
-        titleIcon={LuBrain}
-        list={aiAndResearch}
-      />
-      <TerminalBox title="Design" titleIcon={Paintbrush2} list={designTools} />
+      {techSections.map((section, i) => (
+        <motion.div
+          key={section.title}
+          custom={i}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInVariant}
+        >
+          <TerminalBox
+            title={section.title}
+            titleIcon={section.icon}
+            list={section.list}
+          />
+        </motion.div>
+      ))}
     </div>
   );
 };
