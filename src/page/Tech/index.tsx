@@ -77,22 +77,22 @@ const designTools = [{ name: "Figma", icon: FiFigma, color: "#F24E1E" }];
 
 const techSections = [
   {
-    title: "Programming Languages",
+    title: "Programming",
     icon: Code2,
     list: programmingLanguages,
   },
   {
-    title: "Frontend Development",
+    title: "Frontend",
     icon: PiDesktopDuotone,
     list: frontendDevelopment,
   },
   {
-    title: "Backend Development",
+    title: "Backend",
     icon: Server,
     list: backendDevelopment,
   },
   {
-    title: "Tools & Technologies",
+    title: "Tools",
     icon: Wrench,
     list: toolsAndTechnologies,
   },

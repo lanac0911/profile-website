@@ -57,7 +57,11 @@ const EducationPage = () => {
     language === "en" ? educationItems_en : educationItems_ch;
 
   return (
-    <Box style={{ padding: "2rem" }}>
+    <Box
+      // style={{ padding: "2rem" }}
+
+      px={{ initial: "7", xs: "8" }}
+    >
       <Box className="timeline">
         <motion.div
           key={language}

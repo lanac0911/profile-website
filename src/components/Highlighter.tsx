@@ -24,7 +24,7 @@ const Highlighter: React.FC<HighlighterProps> = ({
             right: "-0.1em",
             bottom: "0.15em",
             top: "50%",
-            opacity: 0.6,
+            opacity: 0.5,
             backgroundColor,
             transform: "skew(-10deg)", // 調整斜角效果
             zIndex: -1,

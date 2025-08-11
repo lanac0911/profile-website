@@ -36,7 +36,7 @@ const ProjectsPage = () => {
               <Flex
                 direction={{
                   initial: "column",
-                  xs: isEven ? "row" : "row-reverse",
+                  sm: isEven ? "row" : "row-reverse",
                 }}
                 style={{ flex: 1 }}
                 gap="1.5em"
@@ -44,13 +44,21 @@ const ProjectsPage = () => {
                 justify="between"
               >
                 {/* Image */}
-                <Box style={{ position: "relative", display: "inline-block" }}>
+                <Box
+                  style={{
+                    width: "100%",
+                    position: "relative",
+                    display: "inline-block",
+                  }}
+                >
                   <img
                     src={project.imageUrl}
                     alt={project.title[language]}
                     style={{
-                      height: 280,
-                      objectFit: "cover",
+                      minHeight: 250,
+                      width: project.imgWidth ?? "100%",
+                      // width: "50%",
+                      objectFit: "contain",
                       borderRadius: 12,
                       boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                       position: "relative",
@@ -84,7 +92,11 @@ const ProjectsPage = () => {
                     justifyContent: "center",
                   }}
                 >
-                  <Highlighter backgroundColor={ColorSets.hightlightBlue}>
+                  <Highlighter
+                    backgroundColor={
+                      project.title.highlightColor ?? ColorSets.hightlightBlue
+                    }
+                  >
                     <Text size="6" style={{ fontWeight: 700 }} mb="3">
                       {project.title[language]}
                     </Text>

@@ -1,6 +1,9 @@
-import lpgImag from "@img/lpg.png";
-import Highlighter from "@/components/Highlighter";
+import lpgImag from "@img/LPG_offcial.png";
+import pawprintImag from "@img/pawprint2.png";
+
+import UnderlineHandDrawn from "@/components/UnderlineHandDrawn";
 import { JSX } from "react";
+import { TagTheme, TagVariant } from "@/components/Tag";
 
 export type LocalizedText = {
   en: () => JSX.Element;
@@ -8,11 +11,17 @@ export type LocalizedText = {
 };
 
 export type Project = {
-  title: { en: string; zh: string };
+  title: {
+    en: string;
+    zh: string;
+    highlightColor?: string;
+  };
   description: LocalizedText;
   tags: string[];
   imageUrl: string;
   url?: string;
+  catgories?: { title: string; type?: TagTheme; variant?: TagVariant }[];
+  imgWidth?: string | number;
 };
 
 export const projects: Project[] = [
@@ -33,21 +42,21 @@ export const projects: Project[] = [
           <ul style={{ paddingLeft: "1.2em", marginTop: "0.5em" }}>
             <li>
               Using
-              <Highlighter backgroundColor={"#61DAFB"}>
+              <UnderlineHandDrawn color={"#61DAFB"}>
                 React Native
-              </Highlighter>
+              </UnderlineHandDrawn>
               for both Android and iOS.
             </li>
             <li>
               Independently set up
-              <Highlighter backgroundColor={"#F59E0B"}>CI/CD</Highlighter>
+              <UnderlineHandDrawn color={"#F59E0B"}>CI/CD</UnderlineHandDrawn>
               pipelines and handled Apple Store submission.
             </li>
             <li>
               Integrated
-              <Highlighter backgroundColor={"#FCD34D"}>
+              <UnderlineHandDrawn color={"#FCD34D"}>
                 Firebase FCM
-              </Highlighter>
+              </UnderlineHandDrawn>
               for notification and alert.
             </li>
             <li>
@@ -83,21 +92,21 @@ export const projects: Project[] = [
           <ul style={{ paddingLeft: "1.2em", marginTop: "0.5em" }}>
             <li>
               使用
-              <Highlighter backgroundColor={"#61DAFB"}>
+              <UnderlineHandDrawn color={"#61DAFB"}>
                 React Native
-              </Highlighter>
+              </UnderlineHandDrawn>
               開發 Android / iOS 雙平台 App。
             </li>
             <li>
               獨立建置
-              <Highlighter backgroundColor={"#F59E0B"}>CI/CD</Highlighter>
+              <UnderlineHandDrawn color={"#F59E0B"}>CI/CD</UnderlineHandDrawn>
               流程並完成 Apple Store 上架。
             </li>
             <li>
               串接
-              <Highlighter backgroundColor={"#FCD34D"}>
+              <UnderlineHandDrawn color={"#FCD34D"}>
                 Firebase FCM
-              </Highlighter>
+              </UnderlineHandDrawn>
               ，實現即時推播通知。
             </li>
             <li>
@@ -129,12 +138,15 @@ export const projects: Project[] = [
       "IoT",
     ],
     imageUrl: lpgImag,
+    imgWidth: "100%",
+    catgories: [{ title: "Frontend - APP" }],
     url: "https://www.artifactdev.tw/",
   },
   {
     title: {
-      en: "Pet Health App",
-      zh: "寵物健康追蹤 App",
+      en: "PawPrints (Pet App)",
+      zh: "毛印（寵物健康追蹤 App）",
+      highlightColor: "#EFCF0B",
     },
     description: {
       en: () => (
@@ -172,7 +184,7 @@ export const projects: Project[] = [
       ),
     },
     tags: ["React Native", "Firebase", "Camera"],
-    imageUrl:
-      "https://plus.unsplash.com/premium_photo-1669083827853-de7a75b6daa9?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
+    catgories: [],
+    imageUrl: pawprintImag,
   },
 ];

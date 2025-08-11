@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
+import { Text } from "@radix-ui/themes";
 
 const blink = keyframes`
   0% { opacity: 1; }
@@ -8,6 +9,7 @@ const blink = keyframes`
 `;
 
 const Cursor = styled.span`
+  color: "white";
   display: inline-block;
   animation: ${blink} 1s step-end infinite;
 `;
@@ -45,10 +47,10 @@ const TypingEffect: React.FC<TypingEffectProps> = ({
   }, [index, text, speed, delay]);
 
   return (
-    <span>
+    <Text style={{ color: "#fff" }}>
       {displayedText}
       <Cursor>|</Cursor>
-    </span>
+    </Text>
   );
 };
 

@@ -54,7 +54,7 @@ const TerminalTitleBar: React.FC<TerminalTitleBarProps> = ({ segments }) => {
               backgroundColor: seg.bg,
               color: seg.color,
               fontWeight: isLast ? 600 : 200,
-              fontSize: "0.75rem",
+              fontSize: "0.7rem",
               padding: "0 0.8rem",
               height: "100%",
               display: "flex",
@@ -69,7 +69,7 @@ const TerminalTitleBar: React.FC<TerminalTitleBarProps> = ({ segments }) => {
             }}
           >
             {isSec ? <>&ensp;</> : undefined}
-            {seg.icon && <seg.icon size={14} style={{ marginRight: 6 }} />}
+            {seg.icon && <seg.icon size={12} style={{ marginRight: 6 }} />}
             {seg.text}
 
             {/* 右凸三角 */}
@@ -100,7 +100,7 @@ const TerminalBox: React.FC<TerminalBoxProps> = ({
   className,
 }) => {
   const segments: Segment[] = [
-    { text: "➜ ~ lana", bg: "#f5e0c3", color: "#5c4033" }, // 淺奶咖
+    { text: "~ lana", bg: "#f5e0c3", color: "#5c4033" }, // 淺奶咖
     { text: "main", icon: titleIcon, bg: "#eec0c6", color: "#792b2b" }, // 玫瑰奶茶底
     { text: <span>&ensp;{title} ％</span>, bg: "#b2dfdb", color: "#004d40" }, // 冷調薄荷藍（強調）
   ];
@@ -129,7 +129,7 @@ const TerminalBox: React.FC<TerminalBoxProps> = ({
           style={{
             display: "flex",
             alignItems: "center",
-            gap: 6,
+            gap: 2,
             marginTop: 6,
           }}
         >

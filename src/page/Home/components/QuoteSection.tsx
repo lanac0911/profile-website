@@ -35,7 +35,6 @@ const QuoteSection = () => {
           <Text
             style={{
               color: "#FFF",
-              // fontSize: "4em",
               lineHeight: 1,
             }}
             weight="bold"

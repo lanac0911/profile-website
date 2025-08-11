@@ -132,6 +132,10 @@ const CodeSection = ({ isMobile = false }: { isMobile?: boolean }) => {
         <Text size="1" style={{ lineHeight: 1 }}>
           {"\u00A0\u00A0"}
           <br />
+          <Text as="span" size="1" style={{ color: codestyle.comment }} mt="1">
+            {"\u00A0\u00A0"}// 特質
+          </Text>
+          <br />
           <Text size="1" style={{ color: codestyle.className, lineHeight: 1 }}>
             {"\u00A0\u00A0"}
             personality
@@ -160,15 +164,17 @@ const CodeSection = ({ isMobile = false }: { isMobile?: boolean }) => {
           <Text size="1" style={{ color: codestyle.white }}>
             ;
           </Text>
-          <Text as="span" size="1" style={{ color: codestyle.comment }} mt="1">
-            {"\u00A0\u00A0"}// 特質
-          </Text>
         </Text>
       </Text>
       <br />
 
       <Text>
         <Text size="1">
+          {/* (主要) 專業技能 */}
+          <Text as="span" size="1" style={{ color: codestyle.comment }}>
+            {"\u00A0\u00A0"}// 技能
+          </Text>
+          <br />
           {"\u00A0\u00A0"}
           <Text size="1" style={{ color: codestyle.className }}>
             skills
@@ -195,64 +201,67 @@ const CodeSection = ({ isMobile = false }: { isMobile?: boolean }) => {
             ;
           </Text>
         </Text>
-        {/* (主要) 專業技能 */}
-        <Text as="span" size="1" style={{ color: codestyle.comment }}>
-          {"\u00A0\u00A0"}// 技能
-        </Text>{" "}
       </Text>
-      <Box
-        style={{
-          padding: 0,
-          textAlign: "left",
-        }}
-      >
-        <Text size="1">
-          {"\u00A0\u00A0"}
-          <Text size="1" style={{ color: codestyle.className }}>
-            education
-          </Text>{" "}
-          <Text size="1" style={{ color: codestyle.white }}>
-            =
-          </Text>{" "}
-        </Text>
-        <Text size="1" style={{ color: codestyle.importFrom }}>{`[`}</Text>{" "}
-        <br />
-        {me.education.map((edu, idx) => (
-          <>
-            {idx !== 0 && <br />}
+      {!isMobile && (
+        <Box
+          style={{
+            padding: 0,
+            textAlign: "left",
+          }}
+        >
+          <br />
+          <Text size="1">
+            {"\u00A0\u00A0"}
+            <Text size="1" style={{ color: codestyle.className }}>
+              education
+            </Text>{" "}
+            <Text size="1" style={{ color: codestyle.white }}>
+              =
+            </Text>{" "}
+          </Text>
+          <Text size="1" style={{ color: codestyle.importFrom }}>{`[`}</Text>{" "}
+          <br />
+          {me.education.map((edu, idx) => (
+            <>
+              {idx !== 0 && <br />}
 
-            <Text key={idx} style={{ textAlign: "left" }}>
-              {"\u00A0\u00A0\u00A0\u00A0"}
-              <Text size="1" style={{ color: codestyle.class }}>
-                new
-              </Text>{" "}
-              <Text size="1" style={{ color: codestyle.attributeName }}>
-                {edu.degree}
-              </Text>{" "}
-              <Text size="1" style={{ color: codestyle.class }}>
-                {`(`}
-              </Text>{" "}
-              <Text size="1" style={{ color: codestyle.library }}>
-                '{edu.field}', '{edu.institution}', '{edu.period}'
-              </Text>{" "}
-              <Text size="1" style={{ color: codestyle.class }}>
-                {`)`}
-                {/* <br /> */}
-              </Text>{" "}
-            </Text>
-          </>
-        ))}
-        <br />
-        {"\u00A0\u00A0\u00A0"}
-        <Text size="1" style={{ color: codestyle.importFrom }}>{`]`}</Text>{" "}
-        <Text size="1" style={{ color: codestyle.white }}>
-          ;
-        </Text>
-        <Text size="1" style={{ color: codestyle.comment }}>
-          {"\u00A0\u00A0"} // 學歷
-        </Text>{" "}
-      </Box>
+              <Text key={idx} style={{ textAlign: "left" }}>
+                {"\u00A0\u00A0\u00A0\u00A0"}
+                <Text size="1" style={{ color: codestyle.class }}>
+                  new
+                </Text>{" "}
+                <Text size="1" style={{ color: codestyle.attributeName }}>
+                  {edu.degree}
+                </Text>{" "}
+                <Text size="1" style={{ color: codestyle.class }}>
+                  {`(`}
+                </Text>{" "}
+                <Text size="1" style={{ color: codestyle.library }}>
+                  '{edu.field}', '{edu.institution}', '{edu.period}'
+                </Text>{" "}
+                <Text size="1" style={{ color: codestyle.class }}>
+                  {`)`}
+                  {/* <br /> */}
+                </Text>{" "}
+              </Text>
+            </>
+          ))}
+          <br />
+          {"\u00A0\u00A0\u00A0"}
+          <Text
+            size="1"
+            style={{ color: codestyle.importFrom }}
+          >{`]`}</Text>{" "}
+          <Text size="1" style={{ color: codestyle.white }}>
+            ;
+          </Text>
+          <Text size="1" style={{ color: codestyle.comment }}>
+            {"\u00A0\u00A0"} // 學歷
+          </Text>{" "}
+        </Box>
+      )}
       <Text>
+        <br />
         <Text size="1" style={{ color: codestyle.brackets }}>{`}`}</Text>
         <Text size="1" style={{ color: codestyle.white }}>
           ;
@@ -260,16 +269,18 @@ const CodeSection = ({ isMobile = false }: { isMobile?: boolean }) => {
       </Text>
       {/* const me */}
       {/* 使用打字效果呈現最後這行 */}
-      <Text
-        as="p"
-        style={{
-          color: codestyle.white,
-          textAlign: "left",
-          fontFamily: "monospace",
-        }}
-      >
-        <TypingEffect text="const me = new AboutMe();" speed={150} />
-      </Text>
+      {!isMobile && (
+        <Text
+          as="p"
+          style={{
+            color: codestyle.white,
+            textAlign: "left",
+            fontFamily: "monospace",
+          }}
+        >
+          <TypingEffect text="const me = new AboutMe();" speed={150} />
+        </Text>
+      )}
     </WindowSection>
   );
 };
