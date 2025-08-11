@@ -20,6 +20,10 @@ import { MdAndroid } from "react-icons/md";
 import { SiIos, SiPrisma } from "react-icons/si";
 import { IoTabletPortraitSharp } from "react-icons/io5";
 import { GrMysql } from "react-icons/gr";
+import { FaHouseSignal } from "react-icons/fa6";
+import { FaChartPie } from "react-icons/fa6";
+import { RiDashboardHorizontalFill } from "react-icons/ri";
+import { MdWeb } from "react-icons/md";
 
 type ProjectTagsProps = {
   tags: string[];
@@ -44,7 +48,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Figma: <FiFigma color="#F24E1E" size={16} />,
   "Green Learning": <IoLeaf color="#228B22" size={16} />,
   PixelHop: <FaGithub color="#8E44AD" size={16} />,
-  "NILM (Energy Disaggregation)": <TbWaveSawTool color="#F59E0B" size={16} />,
+  "NILM (Energy Disaggregation)": <FaHouseSignal color="#F59E0B" size={16} />,
   "Android/iOS": (
     <>
       <SiIos color="#999999" size={16} />
@@ -57,7 +61,17 @@ const iconMap: Record<string, React.ReactNode> = {
   IoT: <IoTabletPortraitSharp color="#3178C6" size={16} />,
   Camera: <FiFigma color="#737373" size={16} />,
   Prisma: <SiPrisma color="#000" size={16} />,
-  MySQL: <GrMysql color="#035D85" size={16} fontWeight={'bold'}/>,
+  MySQL: <GrMysql color="#035D85" size={16} fontWeight={"bold"} />,
+  "Signal Processing": (
+    <TbWaveSawTool color="#035D85" size={16} fontWeight={"bold"} />
+  ),
+  Dashboard: (
+    <RiDashboardHorizontalFill color="#4A986D" size={16} fontWeight={"bold"} />
+  ),
+  "Data Visualization": (
+    <FaChartPie color="#d1543bff" size={16} fontWeight={"bold"} />
+  ),
+  "Web Demo": <MdWeb color="#3b3e3fff" size={16} fontWeight={"bold"} />,
 };
 
 export const ProjectTags: React.FC<ProjectTagsProps> = ({ tags }) => {

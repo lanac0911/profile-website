@@ -1,5 +1,6 @@
 import lpgImag from "@img/LPG_offcial.png";
 import pawprintImag from "@img/pawprint3.png";
+import thsisImag from "@img/thsis.png";
 
 import UnderlineHandDrawn from "@/components/UnderlineHandDrawn";
 import { JSX } from "react";
@@ -241,5 +242,84 @@ export const projects: Project[] = [
     ],
     catgories: [],
     imageUrl: pawprintImag,
+  },
+  {
+    title: {
+      en: "Master Thesis Dashboard & Demo",
+      zh: "碩士論文 Dashboard / Demo",
+      highlightColor: "#4A986D",
+    },
+    description: {
+      en: () => (
+        <>
+          <p>
+            A web-based Dashboard & Demo site for my master's thesis,
+            showcasing:
+            <b> thesis overview</b>, <b> simplified architecture</b>, and a
+            simulated <b>NILM real-world application scenario</b>. Built with{" "}
+            <UnderlineHandDrawn color={"#61DAFB"}>React</UnderlineHandDrawn>,
+            the site serves as a visual presentation tool for academic and
+            demonstration purposes.
+          </p>
+          <ul style={{ paddingLeft: "1.2em", marginTop: "0.5em" }}>
+            <li>
+              Provides a concise introduction to my thesis objectives and
+              methods.
+            </li>
+            <li>
+              Displays a simplified system architecture for quick understanding.
+            </li>
+            <li>
+              Simulates real-world
+              <UnderlineHandDrawn color={"#4A986D"}>NILM</UnderlineHandDrawn>
+              application dashboards for load monitoring.
+            </li>
+            <li>
+              <span style={{ fontWeight: 600, color: "#E43E3E" }}>
+                Currently only contains outline content due to upcoming paper
+                publication.
+              </span>
+            </li>
+          </ul>
+        </>
+      ),
+
+      zh: () => (
+        <>
+          <p>
+            這是一個針對碩士論文所製作的
+            <b>Dashboard 與示範網站</b>，內容包括：
+            <b>論文簡介</b>、<b>簡易架構</b>以及
+            <b>NILM 實際應用情況的模擬</b>。 採用
+            <UnderlineHandDrawn color={"#61DAFB"}>React</UnderlineHandDrawn>
+            開發，作為學術展示與 Demo 之用。
+          </p>
+          <ul style={{ paddingLeft: "1.2em", marginTop: "0.5em" }}>
+            <li>提供論文研究目標與方法的簡要介紹。</li>
+            <li>呈現簡化後的系統架構，便於快速理解。</li>
+            <li>
+              模擬
+              <UnderlineHandDrawn color={"#4A986D"}>NILM</UnderlineHandDrawn>
+              在實際應用中的負載監測情境。
+            </li>
+            <li>
+              <span style={{ fontWeight: 600, color: "#E43E3E" }}>
+                因準備發表論文，目前僅提供大綱內容。
+              </span>
+            </li>
+          </ul>
+        </>
+      ),
+    },
+    tags: [
+      "React",
+      "NILM (Energy Disaggregation)",
+      "Dashboard",
+      "Data Visualization",
+      "Signal Processing",
+      "Web Demo",
+    ],
+    imageUrl: thsisImag,
+    url: "https://nilm-dashboard-px4y.vercel.app/",
   },
 ];
