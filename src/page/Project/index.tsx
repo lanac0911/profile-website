@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@radix-ui/themes";
+import { Box, Flex, Separator, Text } from "@radix-ui/themes";
 import { motion } from "framer-motion";
 import Highlighter from "@/components/Highlighter";
 import { ColorSets } from "@/styles/color";
@@ -11,6 +11,7 @@ import { fadeInVariant } from "@/styles/animate";
 
 const ProjectsPage = () => {
   const { language } = useLanguage();
+
   return (
     <Box px={{ initial: "4", md: "6" }}>
       <LanguageToggle />
@@ -25,104 +26,109 @@ const ProjectsPage = () => {
         {projects.map((project: Project, i) => {
           const isEven = i % 2 === 0;
           return (
-            <motion.div
-              key={project.title[language]}
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInVariant}
-            >
-              <Flex
-                direction={{
-                  initial: "column",
-                  sm: isEven ? "row" : "row-reverse",
-                }}
-                style={{ flex: 1 }}
-                gap="1.5em"
-                align="center"
-                justify="between"
+            <div style={{ marginTop: "1em" }}>
+              <motion.div
+                key={project.title[language]}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInVariant}
               >
-                {/* Image */}
-                <Box
-                  style={{
-                    width: "100%",
-                    position: "relative",
-                    display: "inline-block",
+                <Flex
+                  direction={{
+                    initial: "column",
+                    sm: isEven ? "row" : "row-reverse",
                   }}
+                  style={{ flex: 1 }}
+                  gap="1.5em"
+                  align="center"
+                  justify="between"
+                  wrap="wrap" // 防止窄螢幕擠爆
                 >
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title[language]}
-                    style={{
-                      minHeight: 250,
-                      width: project.imgWidth ?? "100%",
-                      // width: "50%",
-                      objectFit: "contain",
-                      borderRadius: 12,
-                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                      position: "relative",
-                      zIndex: 1,
-                    }}
-                  />
-
-                  {/* 圓形舞台效果 */}
+                  {/* Image */}
                   <Box
                     style={{
-                      position: "absolute",
-                      bottom: -20,
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      width: "100%",
-                      height: "50px",
-                      background:
-                        "radial-gradient(ellipse at center, #00000022 100%, #00000022 50%)",
-                      borderRadius: "40%",
-                      zIndex: 0,
-                      filter: "blur(3px)",
+                      position: "relative",
+                      display: "inline-block",
+                      flex: "0 1 clamp(260px, 42%, 520px)", // 限制圖片寬度
                     }}
-                  />
-                </Box>
-
-                {/* Text */}
-                <Box
-                  style={{
-                    flex: 1,
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Highlighter
-                    backgroundColor={
-                      project.title.highlightColor ?? ColorSets.hightlightBlue
-                    }
                   >
-                    <Text size="6" style={{ fontWeight: 700 }} mb="3">
-                      {project.title[language]}
-                    </Text>
-                  </Highlighter>
-                  {project.url && (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title[language]}
                       style={{
-                        marginLeft: "0.4em",
+                        width: "100%",
+                        height: "auto",
+                        minHeight: 250,
+                        objectFit: "contain",
+                        borderRadius: 12,
+                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                        position: "relative",
+                        zIndex: 1,
                       }}
-                      aria-label="Open project in new tab"
+                    />
+
+                    {/* 圓形舞台效果 */}
+                    <Box
+                      style={{
+                        position: "absolute",
+                        bottom: -20,
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        width: "100%",
+                        height: "50px",
+                        background:
+                          "radial-gradient(ellipse at center, #00000022 100%, #00000022 50%)",
+                        borderRadius: "40%",
+                        zIndex: 0,
+                        filter: "blur(3px)",
+                      }}
+                    />
+                  </Box>
+
+                  {/* Text */}
+                  <Box
+                    style={{
+                      flex: "1 1 0%", // 文字區吃掉剩餘空間
+                      minWidth: 280, // 避免文字過窄
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Highlighter
+                      backgroundColor={
+                        project.title.highlightColor ?? ColorSets.hightlightBlue
+                      }
                     >
-                      <FiExternalLink size={16} />
-                    </a>
-                  )}
-                  <Text as="p" size="3" color="gray">
-                    {project.description[language]()}
-                  </Text>
-                  <Flex wrap="wrap" gap="1em" mt="3">
-                    <ProjectTags tags={project.tags} />
-                  </Flex>
-                </Box>
-              </Flex>
-            </motion.div>
+                      <Text size="6" style={{ fontWeight: 700 }} mb="3">
+                        {project.title[language]}
+                      </Text>
+                    </Highlighter>
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          marginLeft: "0.4em",
+                        }}
+                        aria-label="Open project in new tab"
+                      >
+                        <FiExternalLink size={16} />
+                      </a>
+                    )}
+                    <Text as="p" size="3" color="gray">
+                      {project.description[language]()}
+                    </Text>
+                    <Flex wrap="wrap" gap="1em" mt="3">
+                      <ProjectTags tags={project.tags} />
+                    </Flex>
+                  </Box>
+                </Flex>
+              </motion.div>
+              {i !== projects.length - 1 && <Separator mt="3em"/>}
+            </div>
           );
         })}
       </Flex>

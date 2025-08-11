@@ -12,13 +12,14 @@ import {
 } from "react-icons/bi";
 import { FaReact, FaGithub } from "react-icons/fa";
 import { IoLeaf, IoLogoDocker } from "react-icons/io5";
-import { SiExpress, SiMysql, SiEslint } from "react-icons/si";
+import { SiExpress, SiEslint } from "react-icons/si";
 import { TbBrandVite, TbWaveSawTool } from "react-icons/tb";
 import { FiFigma } from "react-icons/fi";
 import { SiJfrogpipelines } from "react-icons/si";
 import { MdAndroid } from "react-icons/md";
-import { SiIos } from "react-icons/si";
+import { SiIos, SiPrisma } from "react-icons/si";
 import { IoTabletPortraitSharp } from "react-icons/io5";
+import { GrMysql } from "react-icons/gr";
 
 type ProjectTagsProps = {
   tags: string[];
@@ -35,7 +36,7 @@ const iconMap: Record<string, React.ReactNode> = {
   "Node.js": <BiLogoNodejs color="#3C873A" size={16} />,
   "Express.js": <SiExpress color="#000000" size={16} />,
   Firebase: <BiLogoFirebase color="#FFCA28" size={16} />,
-  MySQL: <SiMysql color="#00758F" size={16} />,
+  // MySQL: <SiMysql color="#00758F" size={25} />,
   Git: <FaGithub color="#181717" size={16} />,
   Docker: <IoLogoDocker color="#2496ED" size={16} />,
   "ESLint / Prettier": <SiEslint color="#4B32C3" size={16} />,
@@ -55,6 +56,8 @@ const iconMap: Record<string, React.ReactNode> = {
   "Apple Store": <FaGithub color="#000000" size={16} />,
   IoT: <IoTabletPortraitSharp color="#3178C6" size={16} />,
   Camera: <FiFigma color="#737373" size={16} />,
+  Prisma: <SiPrisma color="#000" size={16} />,
+  MySQL: <GrMysql color="#035D85" size={16} fontWeight={'bold'}/>,
 };
 
 export const ProjectTags: React.FC<ProjectTagsProps> = ({ tags }) => {

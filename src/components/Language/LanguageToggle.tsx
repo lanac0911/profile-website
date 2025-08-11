@@ -9,13 +9,14 @@ const LanguageToggle: React.FC = () => {
 
   return (
     <>
-      <DropdownMenu.Root>
+      <DropdownMenu.Root >
         <DropdownMenu.Trigger asChild>
           <Box
             style={{
               position: "absolute",
               cursor: "pointer",
               right: "1em",
+              zIndex:100
             }}
             aria-label="Toggle language"
           >

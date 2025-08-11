@@ -1,5 +1,5 @@
 import lpgImag from "@img/LPG_offcial.png";
-import pawprintImag from "@img/pawprint2.png";
+import pawprintImag from "@img/pawprint3.png";
 
 import UnderlineHandDrawn from "@/components/UnderlineHandDrawn";
 import { JSX } from "react";
@@ -152,38 +152,93 @@ export const projects: Project[] = [
       en: () => (
         <>
           <p>
-            A mobile health tracking app for pets, helping owners monitor
-            breathing rate and wellness via camera input and simple health logs.
+            A cross-platform React Native mobile app for tracking the health of
+            elderly pets, developed as a full-stack solo project. It enables
+            owners to monitor vital signs and daily wellness with intuitive
+            tools, AI-powered camera analysis, and seamless data management from
+            backend to frontend.
           </p>
           <ul style={{ paddingLeft: "1.2em", marginTop: "0.5em" }}>
-            <li>Built with React Native for Android and iOS compatibility.</li>
             <li>
-              Integrated camera to detect pet chest movement for respiration
-              tracking.
+              Developed with
+              <UnderlineHandDrawn color={"#61DAFB"}>
+                React Native
+              </UnderlineHandDrawn>
+              for seamless Android and iOS support.
             </li>
-            <li>Stored health data logs using Firebase services.</li>
             <li>
-              Designed with pet-friendly UX for ease of daily use by owners.
+              Backend powered by
+              <UnderlineHandDrawn color={"#3C873A"}>Node.js</UnderlineHandDrawn>
+              with
+              <UnderlineHandDrawn color={"#000"}> Prisma </UnderlineHandDrawn>
+              ORM and
+              <UnderlineHandDrawn color={"#035D85"}>MySQL</UnderlineHandDrawn>
+              database for structured health data storage.
+            </li>
+            <li>
+              Utilized
+              <UnderlineHandDrawn color={"#FFCA28"}>
+                Firebase
+              </UnderlineHandDrawn>
+              for real-time data sync and cloud storage of health logs.
+            </li>
+            <li>
+              Designed with
+              <UnderlineHandDrawn color={"#F24E1E"}>Figma</UnderlineHandDrawn>
+              to create a pet-friendly, clean, and user-centered interface.
             </li>
           </ul>
         </>
       ),
+
       zh: () => (
         <>
           <p>
-            寵物健康 App
-            協助飼主透過手機相機觀察寵物胸部起伏，自動偵測呼吸頻率並記錄健康狀況。
+            一款跨平台（React Native）老年寵物健康追蹤
+            App，由我獨立完成前後端開發。提供飼主透過直覺化工具與 AI
+            相機分析監測生命跡象與日常健康狀況，並實現後端到前端的全流程數據管理。
           </p>
           <ul style={{ paddingLeft: "1.2em", marginTop: "0.5em" }}>
-            <li>使用 React Native 開發，支援 Android / iOS 雙平台。</li>
-            <li>透過相機偵測寵物胸部移動，進行呼吸次數分析。</li>
-            <li>結合 Firebase 儲存健康紀錄。</li>
-            <li>介面簡潔直覺，方便日常使用與觀察。</li>
+            <li>
+              使用
+              <UnderlineHandDrawn color={"#61DAFB"}>
+                React Native
+              </UnderlineHandDrawn>
+              開發，支援 Android 與 iOS 雙平台。
+            </li>
+            <li>
+              後端以
+              <UnderlineHandDrawn color={"#3C873A"}>Node.js</UnderlineHandDrawn>
+              搭配
+              <UnderlineHandDrawn color={"#000"}> Prisma </UnderlineHandDrawn>與
+              <UnderlineHandDrawn color={"#035D85"}>MySQL</UnderlineHandDrawn>
+              ，進行結構化健康資料儲存。
+            </li>
+            <li>
+              透過
+              <UnderlineHandDrawn color={"#FFCA28"}>
+                Firebase
+              </UnderlineHandDrawn>
+              實現即時資料同步與健康紀錄雲端保存。
+            </li>
+            <li>
+              使用{" "}
+              <UnderlineHandDrawn color={"#F24E1E"}>Figma</UnderlineHandDrawn>
+              設計寵物友善、簡潔直覺的介面體驗。
+            </li>
           </ul>
         </>
       ),
     },
-    tags: ["React Native", "Firebase", "Camera"],
+    tags: [
+      "Node.js",
+      "Prisma",
+      "MySQL",
+      "Express.js",
+      "React Native",
+      "TypeScript",
+      "Figma",
+    ],
     catgories: [],
     imageUrl: pawprintImag,
   },
